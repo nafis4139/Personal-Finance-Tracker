@@ -1,15 +1,15 @@
-# Mentor Assignment
+<img width="369" height="25" alt="image" src="https://github.com/user-attachments/assets/0f21d4b8-b199-49ac-b0fa-37fb8ee9169d" /># Mentor Assignment
 
 Weekly meeting times is Thursdays as specified below.
 
 | Group | Title                                              | Mentor      | Meeting Time |
 | ----- | -------------------------------------------------- | ----------- | ------------ |
-| 1     | Running Student Tests with Kubernetes              | Hein        | 12:30        |
+| 1     | Running Student Tests with Kubernetes              | Ainaz       | 12:30        |
 | 2     | -                                                  | -           |              |
 | 3     | Continuous Integration Test Framework for HotStuff | Hein        | 12:45        |
 | 4     | E-commerce Platform                                | Haakon Webb |              |
 | 5     | Team Collaboration Tool for Student Projects       | Hein        | 13:00        |
-| 6     | -                                                  | -           |              |
+| 6     | Personal Finance Tracker                           | Ainaz       |              |
 | 7     | E-commerce Platform                                | Haakon Webb |              |
 | 8     | Personal Finance Tracker                           | Jayachander |              |
 | 9     | Personal Finance Tracker                           | Jayachander |              |
