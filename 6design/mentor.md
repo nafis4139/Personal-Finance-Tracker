@@ -1,10 +1,10 @@
-<img width="369" height="25" alt="image" src="https://github.com/user-attachments/assets/0f21d4b8-b199-49ac-b0fa-37fb8ee9169d" /># Mentor Assignment
+# Mentor Assignment
 
 Weekly meeting times is Thursdays as specified below.
 
 | Group | Title                                              | Mentor      | Meeting Time |
 | ----- | -------------------------------------------------- | ----------- | ------------ |
-| 1     | Running Student Tests with Kubernetes              | Ainaz       | 12:15        |
+| 1     | File Storage Service                               | Ainaz       | 12:15        |
 | 2     | -                                                  | -           |              |
 | 3     | Continuous Integration Test Framework for HotStuff | Hein        | 12:45        |
 | 4     | E-commerce Platform                                | Haakon Webb |              |
