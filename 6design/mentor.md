@@ -7,7 +7,7 @@ Weekly meeting times is Thursdays as specified below.
 | 1     | File Storage Service                               | Ainaz       | 12:15        |
 | 2     | -                                                  | -           |              |
 | 3     | Continuous Integration Test Framework for HotStuff | Hein        | 12:45        |
-| 4     | E-commerce Platform                                | Haakon Webb |              |
+| 4     | E-commerce Platform                                | Haakon Webb | 13:30        |
 | 5     | Team Collaboration Tool for Student Projects       | Hein        | 13:00        |
 | 6     | Personal Finance Tracker                           | Ainaz       | 12:45        |
 | 7     | E-commerce Platform                                | Haakon Webb |              |
