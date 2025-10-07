@@ -5,7 +5,7 @@ Weekly meeting times is Thursdays as specified below.
 | Group | Title                                              | Mentor      | Meeting Time |
 | ----- | -------------------------------------------------- | ----------- | ------------ |
 | 1     | File Storage Service                               | Ainaz       | 12:15        |
-| 2     | -                                                  | -           |              |
+| 2     | Gaming Platform                                    | Haakon Webb | 12:45        |
 | 3     | Continuous Integration Test Framework for HotStuff | Hein        | 12:45        |
 | 4     | E-commerce Platform                                | Haakon Webb | 13:30        |
 | 5     | Team Collaboration Tool for Student Projects       | Hein        | 13:00        |
@@ -18,7 +18,7 @@ Weekly meeting times is Thursdays as specified below.
 | 12    | Time Tracking and Payroll System                   | Haakon Webb | 12:15        |
 | 13    | Local Student Marketplace                          | Foroozan.E  | 14:30        |
 | 14    | E-commerce Platform                                | Ainaz       | 14:15        |
-| 15    | Time Tracking and Payroll System                   | Haakon Webb |              |
+| 15    | Time Tracking and Payroll System                   | Haakon Webb | 13:00        |
 | 16    | E-commerce Platform                                | Foroozan.E  | 15:15        |
 | 17    | self-defined - Privacy Age Verification            | Jayachander |              |
 | 18    | QuickFeed Continuous Deployment                    | Hein        | 13:15        |
