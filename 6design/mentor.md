@@ -11,7 +11,7 @@ Weekly meeting times is Thursdays as specified below.
 | 5     | Team Collaboration Tool for Student Projects       | Hein        | 13:00        |
 | 6     | Personal Finance Tracker                           | Ainaz       | 12:45        |
 | 7     | E-commerce Platform                                | Haakon Webb | 12:30        |
-| 8     | Personal Finance Tracker                           | Jayachander |              |
+| 8     | Personal Finance Tracker                           | Jayachander | 12:30        |
 | 9     | Team Collaboration Tool for Student Projects       | Foroozan.E  | 14:30        |
 | 10    | Personal Finance Tracker                           | Ainaz       | 13:15        |
 | 11    | Social Media Platform for University Recruitment   | Ainaz       | 13:45        |
