@@ -26,3 +26,5 @@ Weekly meeting times is Thursdays as specified below.
 | 20    | Video Streaming Application                        | Jayachander | 12:45        |
 | 21    | Gaming Platform                                    | Jayachander |              |
 | 22    | Personal Finance Tracker                           | Foroozan.E  | 12:30        |
+| 23    | MiniX - Mini Stock Exchange                        | Haakon Webb |              |
+| 24    | ------------------------                           | Jayachander |              |
