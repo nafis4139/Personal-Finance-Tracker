@@ -265,4 +265,3 @@ flowchart TB
 ### Monitoring & Logging
 - `/healthz` endpoint for liveness checks  
 - Cloud provider logging dashboard
-
