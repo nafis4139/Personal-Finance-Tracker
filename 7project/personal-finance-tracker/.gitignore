@@ -1,0 +1,12 @@
+# root
+node_modules
+.DS_Store
+.env
+.env.*
+/dist
+/tmp
+# backend
+backend/bin
+backend/.air
+# docker
+*.log
