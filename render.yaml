@@ -1,9 +1,12 @@
 # render.yaml
-services:
-  - type: postgres
-    name: pft-db
-    plan: free
 
+databases:
+  - name: pft-db
+    plan: free
+    databaseName: app
+    user: app
+
+services:
   - type: web
     name: pft-api
     env: docker
