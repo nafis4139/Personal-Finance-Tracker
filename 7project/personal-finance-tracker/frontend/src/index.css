@@ -1,0 +1,135 @@
+:root {
+  /* theme tokens */
+  --bg: #0e1117;       /* page background */
+  --text: #e6edf3;     /* default text */
+  --muted: #9aa4b2;    /* secondary text */
+  --panel: #0f141b;    /* cards/panels (if you use it elsewhere) */
+
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  /* lock to dark; avoid automatic flips */
+  color-scheme: dark;
+  color: var(--text);
+  background-color: var(--bg);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* let the app stretch vertically */
+html, body, #root {
+  height: 100%;
+}
+
+/* SOLID background + no global flex centering */
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+/* If you wrap pages in a .main container, this keeps them wide but centered */
+.main {
+  max-width: 1280px;  /* bump to 1400px if you want even wider */
+  margin: 0 auto;
+  padding: 16px;
+  width: 100%;
+}
+
+/* ------------------------ */
+/* Empty state (kept yours) */
+/* ------------------------ */
+
+.empty-state {
+  display: grid;
+  place-items: center;
+  padding: 3rem 1rem;
+}
+
+.empty-card {
+  text-align: center;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 2rem;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.05);
+  max-width: 480px;
+}
+
+.empty-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.empty-card h3 {
+  font-size: 1.25rem;
+  margin: 0.25rem 0;
+}
+
+.empty-card p {
+  color: #666;
+  margin: 0.25rem 0 1rem;
+}
+
+.empty-action .btn {
+  margin-top: 0.5rem;
+}
+
+/* ------------------------ */
+/* defaults (kept yours)    */
+/* ------------------------ */
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover { color: #535bf2; }
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover { border-color: #646cff; }
+button:focus,
+button:focus-visible { outline: 4px auto -webkit-focus-ring-color; }
+
+/* Remove the light-mode auto swap; we stay dark */
+@media (prefers-color-scheme: light) {
+  :root {
+    color: var(--text);
+    background-color: var(--bg);
+  }
+  a:hover { color: #747bff; }
+  button { background-color: #1a1a1a; }
+}
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+@media (max-width: 980px) {
+  .kpi-grid {
+    grid-template-columns: 1fr;
+  }
+}
