@@ -262,7 +262,7 @@ export default function Dashboard() {
           .span-2 { grid-column: 1 / -1; }
         }
         /* Extra height so legends fit comfortably; hide accidental overflow */
-        .panel { height: 480px; overflow: hidden; }
+        .panel { height: 540px; overflow: hidden; }
       `}</style>
 
       <h1 className="h1">Dashboard</h1>
