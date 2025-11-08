@@ -437,7 +437,7 @@ export default function Dashboard() {
                   <ResponsiveContainer width="100%" height="100%">
                     <PieChart>
                       <Tooltip />
-                      <Legend layout="vertical" align="right" verticalAlign="middle" />
+                      <Legend layout="horizontal" align="center" verticalAlign="bottom" />
                       <Pie
                         data={[
                           { name: "Income", value: income, color: "#4CAF50" },
@@ -470,7 +470,7 @@ export default function Dashboard() {
                   <ResponsiveContainer width="100%" height="100%">
                     <PieChart>
                       <Tooltip />
-                      <Legend layout="vertical" align="right" verticalAlign="middle" />
+                      <Legend layout="horizontal" align="center" verticalAlign="bottom" />
                       <Pie
                         data={monthlyCatTotals.filter((c) => c.expense > 0)}
                         dataKey="expense"
