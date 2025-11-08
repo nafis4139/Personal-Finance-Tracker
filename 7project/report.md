@@ -1,48 +1,49 @@
 # Project Report
 
-> **Instructions**:
-> This template provides the structure for your project report.
-> Replace the placeholder text with your actual content.
-> Remove instructions that are not relevant for your project, but leave the headings along with a (NA) label.
-
 ## Project Overview
 
-**Project Name**: [Your project name]
+**Project Name**: Personal Finance Tracker
 
 **Group Members**:
 
-- Student number, Name, GitHub username
-- Student number, Name, GitHub username
-- Student number, Name, GitHub username
+- Student ID: 274502, Name: B M Nafis Fuad, GitHub username: nafis4139
 
 **Brief Description**:
-[2-3 sentences describing what your application does and its main purpose]
+The **Personal Finance Tracker** is a web-based application that helps users manage and analyze their personal finances. It allows users to record their income and expenses, categorize transactions, and view visual summaries of their spending habits.
 
 ## Architecture Overview
 
 ### High-Level Architecture
 
-[Describe the overall system architecture. Consider including a diagram using mermaid or linking to an image]
-
 ```mermaid
-graph TD
-    A[Component A] --> B[Component B]
-    B --> C[Component C]
+flowchart LR
+  user((User)) --> ui[Web App]
+  ui --> api[Backend API]
+  api --> auth[Auth Service]
+  api --> db[(Database)]
 ```
 
 ### Components
 
-- **Component 1**: [Description of what this component does]
-- **Component 2**: [Description of what this component does]
-- **Component 3**: [Description of what this component does]
+- **Web App:**  
+  Handles user interface, form inputs, and dashboards. Communicates with backend via REST API.
+   
+- **Backend API:**  
+  Exposes endpoints for authentication, transactions, categories, and budgets. Handles validation, business logic, and database access.
+
+- **Auth Service:**  
+  Issues and validates JWT tokens for authenticated requests.
+    
+- **Database:**  
+  Stores persistent data such as users, transactions, categories and budgets.
 
 ### Technologies Used
 
-- **Backend**: [e.g., Go, Node.js, Python]
-- **Database**: [e.g., PostgreSQL, MongoDB, Redis]
-- **Cloud Services**: [e.g., AWS EC2, Google Cloud Run, Azure Functions]
-- **Container Orchestration**: [e.g., Docker, Kubernetes]
-- **Other**: [List other significant technologies]
+- **Backend**: Go (Gin)
+- **Frontend**: React + TypeScript
+- **Database**: PostgreSQ
+- **Cloud Services**: Render
+- **Container Orchestration**: Docker
 
 ## Prerequisites
 
@@ -73,8 +74,8 @@ graph TD
 ### 1. Clone the Repository
 
 ```bash
-git clone [your-repository-url]
-cd [repository-name]
+git clone https://github.com/dat515-2025/Group-24.git
+cd 7project
 ```
 
 ### 2. Install Dependencies
@@ -217,52 +218,41 @@ cd [repository-name]
 
 | Task/Component                                                      | Assigned To | Status        | Time Spent | Difficulty | Notes       |
 | ------------------------------------------------------------------- | ----------- | ------------- | ---------- | ---------- | ----------- |
-| Project Setup & Repository                                          | [Name]      | ✅ Complete    | [X hours]  | Medium     | [Any notes] |
-| [Design Document](https://github.com/dat515-2025/group-name)         | [Name]      | ✅ Complete    | [X hours]  | Easy       | [Any notes] |
-| [Backend API Development](https://github.com/dat515-2025/group-name) | [Name]      | ✅ Complete    | [X hours]  | Hard       | [Any notes] |
-| [Database Setup & Models](https://github.com/dat515-2025/group-name) | [Name]      | ✅ Complete    | [X hours]  | Medium     | [Any notes] |
-| [Frontend Development](https://github.com/dat515-2025/group-name)    | [Name]      | 🔄 In Progress | [X hours]  | Medium     | [Any notes] |
-| [Docker Configuration](https://github.com/dat515-2025/group-name)    | [Name]      | ✅ Complete    | [X hours]  | Easy       | [Any notes] |
-| [Cloud Deployment](https://github.com/dat515-2025/group-name)        | [Name]      | ✅ Complete    | [X hours]  | Hard       | [Any notes] |
-| [Testing Implementation](https://github.com/dat515-2025/group-name)  | [Name]      | ⏳ Pending     | [X hours]  | Medium     | [Any notes] |
-| [Documentation](https://github.com/dat515-2025/group-name)           | [Name]      | ✅ Complete    | [X hours]  | Easy       | [Any notes] |
-| [Presentation Video](https://github.com/dat515-2025/group-name)      | [Name]      | ✅ Complete    | [X hours]  | Medium     | [Any notes] |
+| Project Setup & Repository                                          | Nafis      | ✅ Complete    | 1 hours  | Easy     |  |
+| [Design Document](https://github.com/dat515-2025/Group-24/blob/main/7project/design.md)         | Nafis      | ✅ Complete    | 8 hours  | Medium       |  |
+| [Backend API Development](https://github.com/dat515-2025/Group-24/tree/main/7project/personal-finance-tracker/backend) | Nafis     | ✅ Complete    | 32 hours  | Hard       |  |
+| [Database Setup & Models](https://github.com/dat515-2025/Group-24) | Nafis      | ✅ Complete    | 10 hours  | Medium     |  |
+| [Frontend Development](https://github.com/dat515-2025/Group-24/tree/main/7project/personal-finance-tracker/frontend)    | Nafis      | ✅ Complete | 16 hours  | Medium     |  |
+| [Docker Configuration](https://github.com/dat515-2025/Group-24)    | Nafis      | ✅ Complete    | 12 hours  | Easy       |  |
+| [Cloud Deployment](https://github.com/dat515-2025/Group-24/blob/main/render.yaml)        | Nafis      | ✅ Complete    | 15 hours  | Hard       |  |
+| [Testing Implementation](https://github.com/dat515-2025/Group-24)  | Nafis      | ⏳ Pending     | X hours  | Medium     |  |
+| [Documentation](https://github.com/dat515-2025/Group-24)           | Nafis      | ⏳ Pending    | X hours | Easy       |  |
+| [Presentation Video](https://github.com/dat515-2025/Group-24)      | Nafis      | ⏳ Pending    | X hours  | Medium     |  |
 
 **Legend**: ✅ Complete | 🔄 In Progress | ⏳ Pending | ❌ Not Started
 
 ## Hour Sheet
 
-> Link to the specific commit on GitHub for each contribution.
+> [Link to the specific commit on GitHub for each contribution.](https://github.com/dat515-2025/Group-24/commits/main/?author=nafis4139)
 
-### [Team Member 1 Name]
+### B M Nafis Fuad
 
-| Date      | Activity            | Hours      | Description                         |
-| --------- | ------------------- | ---------- | ----------------------------------- |
-| [Date]    | Initial Setup       | [X.X]      | Repository setup, project structure |
-| [Date]    | Backend Development | [X.X]      | Implemented user authentication     |
-| [Date]    | Testing             | [X.X]      | Unit tests for API endpoints        |
-| [Date]    | Documentation       | [X.X]      | Updated README and design doc       |
-| **Total** |                     | **[XX.X]** |                                     |
-
-### [Team Member 2 Name]
-
-| Date      | Activity             | Hours      | Description                               |
-| --------- | -------------------- | ---------- | ----------------------------------------- |
-| [Date]    | Frontend Development | [X.X]      | Created user interface mockups            |
-| [Date]    | Integration          | [X.X]      | Connected frontend to backend API         |
-| [Date]    | Deployment           | [X.X]      | Docker configuration and cloud deployment |
-| [Date]    | Testing              | [X.X]      | End-to-end testing                        |
-| **Total** |                      | **[XX.X]** |                                           |
-
-### [Team Member 3 Name] (if applicable)
-
-| Date      | Activity                 | Hours      | Description                      |
-| --------- | ------------------------ | ---------- | -------------------------------- |
+| Date      | Activity                 | Hours      | Description                         |
+| --------- | ------------------------ | ---------- | ----------------------------------- |
+| [30/10/2025]    | Initial Setup            | [01]      | Repository setup, project structure |
+| [02/11/2025]    | Backend Development      | [X.X]      | Implemented user authentication     |
+| [Date]    | Testing                  | [X.X]      | Unit tests for API endpoints        |
+| [08 Nov]    | Documentation            | [X.X]      | Updated README and design doc       |
+| [Date]    | Frontend Development     | [X.X]      | Created user interface mockups            |
+| [Date]    | Integration              | [X.X]      | Connected frontend to backend API         |
+| [Date]    | Deployment               | [X.X]      | Docker configuration and cloud deployment |
+| [Date]    | Testing                  | [X.X]      | End-to-end testing                        |
 | [Date]    | Database Design          | [X.X]      | Schema design and implementation |
 | [Date]    | Cloud Configuration      | [X.X]      | AWS/GCP setup and configuration  |
 | [Date]    | Performance Optimization | [X.X]      | Caching and query optimization   |
 | [Date]    | Monitoring               | [X.X]      | Logging and monitoring setup     |
-| **Total** |                          | **[XX.X]** |                                  |
+| **Total** |                          | **[XX.X]** |                                     |
+
 
 ### Group Total: [XXX.X] hours
 
@@ -284,17 +274,10 @@ cd [repository-name]
 
 ### Individual Growth
 
-#### [Team Member 1 Name]
+#### B M Nafis Fuad
 
 [Personal reflection on growth, challenges, and learning]
 
-#### [Team Member 2 Name]
-
-[Personal reflection on growth, challenges, and learning]
-
-#### [Team Member 3 Name] (if applicable)
-
-[Personal reflection on growth, challenges, and learning]
 
 ---
 
