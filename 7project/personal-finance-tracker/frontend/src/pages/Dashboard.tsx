@@ -242,8 +242,15 @@ export default function Dashboard() {
 
   const yearTotals = useMemo(() => {
     let inc = 0, exp = 0;
-    for (const t of txns) (t.type === "income" ? inc : (exp += t.amount));
-    return { income: +inc.toFixed(2), expense: +exp.toFixed(2), net: +(inc - exp).toFixed(2) };
+    for (const t of txns) {
+      if (t.type === "income") inc += t.amount;
+      else exp += t.amount;
+    }
+    return {
+      income: +inc.toFixed(2),
+      expense: +exp.toFixed(2),
+      net: +(inc - exp).toFixed(2),
+    };
   }, [txns]);
 
   const hasMonthlyData = monthlyCatTotals.length > 0 || income > 0 || expense > 0;
@@ -261,8 +268,8 @@ export default function Dashboard() {
           .dash-grid-2 { grid-template-columns: 1fr 1fr; align-items: stretch; }
           .span-2 { grid-column: 1 / -1; }
         }
-        /* Extra height so legends fit comfortably; hide accidental overflow */
-        .panel { height: 540px; overflow: hidden; }
+        .panel { height: 540px; overflow: visible; }
+        .span-2.panel { height: 680px; overflow: visible; }
       `}</style>
 
       <h1 className="h1">Dashboard</h1>
