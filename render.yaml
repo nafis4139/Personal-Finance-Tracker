@@ -2,7 +2,7 @@
 
 databases:
   - name: pft-db
-    plan: free
+    plan: pro
     databaseName: app
     user: app
 
@@ -11,7 +11,7 @@ services:
     name: pft-api
     env: docker
     rootDir: 7project/personal-finance-tracker/backend
-    plan: free
+    plan: pro
     healthCheckPath: /api/healthz
     envVars:
       - key: PORT
@@ -27,7 +27,7 @@ services:
     name: pft-frontend
     env: docker
     rootDir: 7project/personal-finance-tracker/frontend
-    plan: free
+    plan: pro
     envVars:
       - key: VITE_API_BASE
         value: /api

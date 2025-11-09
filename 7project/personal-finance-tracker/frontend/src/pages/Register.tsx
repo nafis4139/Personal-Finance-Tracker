@@ -13,9 +13,9 @@ export default function Register() {
   const n = useNavigate();
 
   // Controlled inputs with dev-friendly defaults.
-  const [name, setName] = useState("Nafis");
-  const [email, setEmail] = useState("nafis@example.com");
-  const [password, setPassword] = useState("secret123");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   // UI state for error feedback and submit progress.
   const [err, setErr] = useState<string | null>(null);

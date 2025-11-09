@@ -13,8 +13,8 @@ export default function Login() {
   const n = useNavigate();
 
   // Local form state (pre-filled defaults for convenience in development).
-  const [email, setEmail] = useState("nafis@example.com");
-  const [password, setPassword] = useState("secret123");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   // UI state for error message and submit progress.
   const [err, setErr] = useState<string | null>(null);
