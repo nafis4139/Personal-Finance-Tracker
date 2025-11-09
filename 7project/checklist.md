@@ -48,10 +48,10 @@ This means that you must get at least 2 points for each item in this category.
 |                                  | Multiple replicas                       | 5              | -                 |
 |                                  | Kubernetes deployment                   | 10             | -                 |
 | **Quality Assurance**            |                                         |                |                  |
-| Testing                          | Unit tests                              | 5              | -                 |
-|                                  | Integration tests                       | 5              | -                 |
-|                                  | End-to-end tests                        | 5              | -                 |
-|                                  | Performance testing                     | 5              | -                 |
+| Testing                          | Unit tests                              | 5              | 5                 |
+|                                  | Integration tests                       | 5              | 5                 |
+|                                  | End-to-end tests                        | 5              | 5                 |
+|                                  | Performance testing                     | 5              | 5                 |
 | Monitoring & Operations          | Health checks                           | 5              | 5                 |
 |                                  | Logging                                 | 5              | 2                 |
 |                                  | Metrics/Monitoring                      | 5              |                  |

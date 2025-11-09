@@ -133,27 +133,52 @@ cd 7project
 
 ## Testing Instructions
 
-### Unit Tests
+### Backend Unit Tests
 
 ```bash
-# Commands to run unit tests
-# For example:
-# go test ./...
-# npm test
+cd backend/
+mkdir -p /tmp/dc
+docker --config /tmp/dc run --rm -v "$PWD":/app -w /app golang:1.25   bash -lc 'export PATH=$PATH:/usr/local/go/bin; go test ./...'
 ```
 
-### Integration Tests
+### Backend Integration Tests
 
 ```bash
-# Commands to run integration tests
-# Any setup required for integration tests
+cd backend/
+PG_TEST_DSN="postgres://app:app@localhost:5432/app?sslmode=disable" go test ./integration -v
+```
+
+### Frontend Unit/Integration Tests
+
+```bash
+cd frontend
+npm i -D vitest @testing-library/react @testing-library/user-event jsdom
+
 ```
 
 ### End-to-End Tests
 
 ```bash
-# Commands to run e2e tests
-# How to set up test environment
+cd frontend/
+npm i -D @playwright/test
+npx playwright install
+sudo npx playwright install-deps
+
+E2E_BASE=http://localhost:8080 npx playwright test
+# against Render:
+E2E_BASE=https://pft-frontend-h0qd.onrender.com npx playwright test
+```
+
+### Performance testing
+
+```bash
+cd .. #root directory
+mkdir -p /tmp/dc
+DOCKER_CONFIG=/tmp/dc docker run --rm   -e BASE=https://pft-api-x9xf.onrender.com/api   -v "$PWD/perf":/scripts grafana/k6 run /scripts/login_k6.js
+
+E2E_BASE=http://localhost:8080 npx playwright test
+# against Render:
+E2E_BASE=https://pft-frontend-h0qd.onrender.com npx playwright test
 ```
 
 ## Usage Examples
