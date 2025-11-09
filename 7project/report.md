@@ -25,33 +25,34 @@ flowchart LR
 
 ### Components
 
-- **Web App:**  
-  Handles user interface, form inputs, and dashboards. Communicates with backend via REST API.
+- **Web App (Frontend):**  
+  Built with React and TypeScript. It provides a responsive, dark-themed UI that allows users to add and view transactions, budgets, and spending analytics. Recharts is used for data visualization.
    
-- **Backend API:**  
-  Exposes endpoints for authentication, transactions, categories, and budgets. Handles validation, business logic, and database access.
+- **Backend API (Server):**  
+  Implemented in Go using the Gin framework. It handles authentication, data validation, REST endpoints for categories, transactions, and budgets, and interacts with PostgreSQL via a repository layer.
 
-- **Auth Service:**  
-  Issues and validates JWT tokens for authenticated requests.
+- **Auth Service (JWT):**  
+  Generates and validates JSON Web Tokens for secure session management.
     
-- **Database:**  
-  Stores persistent data such as users, transactions, categories and budgets.
+- **Database (PostgreSQL):**  
+  Stores users, categories, budgets, and transaction data. It supports user-level data isolation and relational integrity.
 
 ### Technologies Used
 
 - **Backend**: Go (Gin)
 - **Frontend**: React + TypeScript
 - **Database**: PostgreSQ
-- **Cloud Services**: Render
+- **Cloud Services**: Render (Frontend + Backend + Managed PostgreSQL)
 - **Container Orchestration**: Docker
+- **Visualization**: Recharts (for dashboards)
 
 ## Prerequisites
 
 ### System Requirements
 
-- Operating System: [e.g., Linux, macOS, Windows]
-- Minimum RAM: [e.g., 8GB]
-- Storage: [e.g., 10GB free space]
+- Operating System: Linux, macOS, Windows
+- Minimum RAM: 8GB
+- Storage: 10GB free space
 
 ### Required Software
 
@@ -210,7 +211,7 @@ cd 7project
 
 ---
 
-## Self-Assessment Table
+## Progress Table
 
 > Be honest and detailed in your assessments.
 > This information is used for individual grading.
@@ -239,16 +240,16 @@ cd 7project
 
 | Date      | Activity                 | Hours      | Description                         |
 | --------- | ------------------------ | ---------- | ----------------------------------- |
-| [30/10/2025]    | Initial Setup            | [01]      | Repository setup, project structure |
-| [02/11/2025]    | Backend Development      | [X.X]      | Implemented user authentication     |
+| 30 Oct    | Initial Setup            | 01      | Repository setup, project structure |
+| 08 Nov    | Backend Development      | 32      | Implemented user authentication     |
 | [Date]    | Testing                  | [X.X]      | Unit tests for API endpoints        |
-| [08 Nov]    | Documentation            | [X.X]      | Updated README and design doc       |
-| [Date]    | Frontend Development     | [X.X]      | Created user interface mockups            |
-| [Date]    | Integration              | [X.X]      | Connected frontend to backend API         |
-| [Date]    | Deployment               | [X.X]      | Docker configuration and cloud deployment |
+| 08 Nov    | Documentation            | [X.X]      | Updated README and design doc       |
+| 08 Nov    | Frontend Development     | 16      | Created user interface mockups            |
+| 08 Nov    | Integration              | 04     | Connected frontend to backend API         |
+| 08 Nov    | Deployment               | [X.X]      | Docker configuration and cloud deployment |
 | [Date]    | Testing                  | [X.X]      | End-to-end testing                        |
-| [Date]    | Database Design          | [X.X]      | Schema design and implementation |
-| [Date]    | Cloud Configuration      | [X.X]      | AWS/GCP setup and configuration  |
+| 08 Nov    | Database Design          | [X.X]      | Schema design and implementation |
+| 08 Nov    | Cloud Configuration      | [X.X]      | Render setup and configuration  |
 | [Date]    | Performance Optimization | [X.X]      | Caching and query optimization   |
 | [Date]    | Monitoring               | [X.X]      | Logging and monitoring setup     |
 | **Total** |                          | **[XX.X]** |                                     |

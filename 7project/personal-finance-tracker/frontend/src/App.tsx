@@ -1,3 +1,5 @@
+// frontend/src/App.tsx
+
 import { BrowserRouter, Routes, Route, NavLink, Navigate, useNavigate } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";

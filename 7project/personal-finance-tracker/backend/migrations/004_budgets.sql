@@ -1,4 +1,4 @@
--- 004_budgets.sql
+-- backend/migrations/004_budgets.sql
 CREATE TABLE IF NOT EXISTS budgets (
     id            BIGSERIAL PRIMARY KEY,
     user_id       BIGINT NOT NULL REFERENCES users(id) ON DELETE CASCADE,

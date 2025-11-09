@@ -1,4 +1,4 @@
--- 001_users.sql
+-- backend/migrations/001_users.sql
 CREATE TABLE IF NOT EXISTS users (
     id            BIGSERIAL PRIMARY KEY,
     name          TEXT NOT NULL,

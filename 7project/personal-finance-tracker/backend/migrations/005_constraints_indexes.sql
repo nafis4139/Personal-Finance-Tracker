@@ -1,4 +1,4 @@
--- 005_constraints_indexes.sql
+-- backend/migrations/005_constraints_indexes.sql
 BEGIN;
 
 -- 1) Make transactions.category_id nullable so ON DELETE SET NULL is possible

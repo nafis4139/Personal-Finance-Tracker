@@ -1,3 +1,4 @@
+-- backend/migrations/008_budgets_fk_restrict.sql
 -- +goose Up
 -- +migrate Up
 BEGIN;

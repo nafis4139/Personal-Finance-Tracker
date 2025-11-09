@@ -1,4 +1,5 @@
 // frontend/src/components/EmptyState.tsx
+
 // Presentational component for displaying an "empty state" UI.
 // Renders an icon, a title, an optional subtitle, and an optional action area (e.g., button/link).
 // Styling is expected to be provided by CSS classes: empty-state, empty-card, empty-icon, empty-action.

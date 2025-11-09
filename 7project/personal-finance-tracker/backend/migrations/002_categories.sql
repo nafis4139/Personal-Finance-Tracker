@@ -1,4 +1,4 @@
--- 002_categories.sql
+-- backend/migrations/002_categories.sql
 CREATE TABLE IF NOT EXISTS categories (
     id         BIGSERIAL PRIMARY KEY,
     user_id    BIGINT NOT NULL REFERENCES users(id) ON DELETE CASCADE,

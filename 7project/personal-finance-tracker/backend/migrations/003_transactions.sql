@@ -1,4 +1,4 @@
--- 003_transactions.sql
+-- backend/migrations/003_transactions.sql
 CREATE TABLE IF NOT EXISTS transactions (
     id           BIGSERIAL PRIMARY KEY,
     user_id      BIGINT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
