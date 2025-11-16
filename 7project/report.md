@@ -57,7 +57,9 @@ The system is a classic three-tier web application:
 The frontend talks to the backend over `/api/*` endpoints, and the backend persists all data in PostgreSQL.
 
 **Components and responsibilities:**  
-1. **Web App (Frontend ):** Handles user interface, form inputs, and dashboards. Communicates with backend via REST API.
+1. **Web App (Frontend ):** 
+
+Handles user interface, form inputs, and dashboards. Communicates with backend via REST API.
   - Built with React + TypeScript + Vite.
   - Uses React Router to provide pages for **Login / Register**, **Dashboard**, **Transactions**, **Categories**, **Budgets**.
   - Uses a small API helper (lib/api) to call the backend with fetch.
@@ -66,7 +68,9 @@ The frontend talks to the backend over `/api/*` endpoints, and the backend persi
   - Built as static files and served by Nginx inside the frontend Docker container.
   - Nginx is also configured as a reverse proxy so that browser requests to `/api/` are forwarded to the backend service on Render.
    
-2. **Backend API (Server):** Exposes endpoints for authentication, transactions, categories, and budgets. Handles validation, business logic, and database access.
+2. **Backend API (Server):** 
+
+Exposes endpoints for authentication, transactions, categories, and budgets. Handles validation, business logic, and database access.
   - Implemented in Go using the Gin framework.
   - Core Structure:
     - `backend/cmd/api/main.go` is the main entrypoint that loads config (port, DB_DSN, JWT secret), connects to PostgreSQL, runs database migrations.
@@ -81,7 +85,9 @@ The frontend talks to the backend over `/api/*` endpoints, and the backend persi
     - CRUD operations for categories, transactions, and budgets.
     - Aggregation logic for dashboard summaries (e.g. monthly totals).
 
-3. **Auth Service (JWT):** Issues and validates JWT tokens for authenticated requests.
+3. **Auth Service (JWT):** 
+
+Issues and validates JWT tokens for authenticated requests.
   - Uses JSON Web Tokens for stateless authentication.
   - On `/api/login`:
     - Checks the user’s email/password (using hashed passwords).
@@ -92,7 +98,9 @@ The frontend talks to the backend over `/api/*` endpoints, and the backend persi
     - Extracts the user ID and attaches it to the request context.
   - All protected routes (`/api/me`, `/api/transactions`, `/api/budgets`, etc.) require a valid token.
     
-4. **Database (PostgreSQL):** Stores persistent data such as users, transactions, categories and budgets.
+4. **Database (PostgreSQL):** 
+
+Stores persistent data such as users, transactions, categories and budgets.
   - Hosted as a managed PostgreSQL instance on Render (pft-db).
   - It Stores:
     - Users and credentials
@@ -114,7 +122,7 @@ The frontend talks to the backend over `/api/*` endpoints, and the backend persi
     - The managed PostgreSQL database.
     - The backend and frontend services.
     - Environment variables and health check paths.
-    
+
 Each push to GitHub triggers a new build and deployment on Render.
 
 **Data flow:**  
