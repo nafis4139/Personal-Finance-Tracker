@@ -1,6 +1,6 @@
 # Project Report
 
-## 01. Project Overview
+## 1. Project Overview
 
 **Project Name**: Personal Finance Tracker
 
@@ -16,10 +16,9 @@
 
 The **Personal Finance Tracker** is a full-stack web application that allows users to track income, expenses, and budgets efficiently. Users can record transactions, categorize their spending, and view interactive dashboards for monthly summaries and budgeting insights. The platform focuses on simplicity, visual feedback, and data-driven decision-making for personal finance management.
 
-## Architecture Overview
+## 2. Architecture Overview
 
-### High-Level Architecture
-
+### 2.1 System diagram
 ```mermaid
 flowchart LR
   user((User)) --> ui[Web App]
@@ -28,24 +27,191 @@ flowchart LR
   api --> db[(Database)]
 ```
 
-### Components
+The system is a classic three-tier web application:
+- A React app in the browser
+- A Go/Gin REST API on the server
+- A PostgreSQL database hosted in the cloud (Render)
 
-- **Web App (Frontend):**  
-  Built with React and TypeScript. It provides a responsive, user-friendly interface for login, category management, budgets, and transaction tracking. The UI includes data visualization using Recharts and supports persistent sessions with JWT tokens.
+The frontend talks to the backend over `/api/*` endpoints, and the backend persists all data in PostgreSQL.
+
+### 2.2 Components and responsibilities
+
+**01. Web App (Frontend ):** 
+
+Handles user interface, form inputs, and dashboards. Communicates with backend via REST API.
+  - Built with React + TypeScript + Vite.
+  - Uses React Router to provide pages for **Login / Register**, **Dashboard**, **Transactions**, **Categories**, **Budgets**.
+  - Uses a small API helper (lib/api) to call the backend with fetch.
+  - Stores the JWT token in `localStorage` and attaches it to `Authorization: Bearer ...` for authenticated requests.
+  - Uses Recharts to render visualizations on the dashboard, for example spending by category, monthly trends etc.
+  - Built as static files and served by Nginx inside the frontend Docker container.
+  - Nginx is also configured as a reverse proxy so that browser requests to `/api/` are forwarded to the backend service on Render.
    
-- **Backend API (Server):**  
-  Implemented in Go using the Gin framework. It handles authentication, data validation, REST endpoints for categories, transactions, and budgets, and interacts with PostgreSQL via a repository layer.
+**02. Backend API (Server):** 
 
-- **Auth Service (JWT):**  
-  Implements secure token-based authentication for all API routes. Tokens are validated for each request to ensure user-level data protection.
+Exposes endpoints for authentication, transactions, categories, and budgets. Handles validation, business logic, and database access.
+  - Implemented in Go using the Gin framework.
+  - Core Structure:
+    - `backend/cmd/api/main.go` is the main entrypoint that loads config (port, DB_DSN, JWT secret), connects to PostgreSQL, runs database migrations.
+    - `backend/internal/handler/` contains HTTP handlers for each endpoint (e.g. /api/login, /api/transactions).
+    - `backend/internal/repo/` contains the database/repository layer that runs SQL queries.
+    - `backend/internal/model/` contains the Go structs that represent core entities (User, Category, Transaction, Budget).
+    - `backend/internal/auth/` contains password hashing, JWT creation and verification.
+    - `backend/internal/platform` contains configuration, migrations, and platform utilities.
+  - API responsibilities:
+    - User registration and login.
+    - Validating and authenticating requests using JWT middleware.
+    - CRUD operations for categories, transactions, and budgets.
+    - Aggregation logic for dashboard summaries (e.g. monthly totals).
+
+**03. Auth Service (JWT):** 
+
+Issues and validates JWT tokens for authenticated requests.
+  - Uses JSON Web Tokens for stateless authentication.
+  - On `/api/login`:
+    - Checks the user’s email/password (using hashed passwords).
+    - Returns a signed JWT containing the user ID and expiry.
+  - The frontend stores this token and sends it on every request in the Authorization header.
+  - A Gin middleware (JWTMiddleware) verifies the token:
+    - Rejects missing/invalid tokens.
+    - Extracts the user ID and attaches it to the request context.
+  - All protected routes (`/api/me`, `/api/transactions`, `/api/budgets`, etc.) require a valid token.
     
-- **Database (PostgreSQL):**  
-  Stores users, categories, budgets, and transactions in normalized relational tables, deployed using Render’s managed PostgreSQL service.
+**04. Database (PostgreSQL):** 
 
-- **Deployment (Render + Docker):**  
-  Both frontend and backend are containerized using Docker and deployed to Render Cloud, using a managed database and continuous deployment from GitHub.
+Stores persistent data such as users, transactions, categories and budgets.
+  - Hosted as a managed PostgreSQL instance on Render (pft-db).
+  - It Stores:
+    - Users and credentials
+    - User-defined categories
+    - Transactions (income/expense entries)
+    - Budgets per month per category
+  - Accessed via pgx connection pool in Go.
+  - Database schema is created and updated via migrations that run on startup.
 
-### Technologies Used
+**05. Deployment (Render + Docker):**
+  - Both frontend and backend are containerized using Docker.
+  - Backend service (pft-api):
+    - Built from `backend/Dockerfile`.
+    - Receives `DB_DSN` and `JWT_SECRET` from Render environment (via `render.yaml`).
+  - Frontend service (pft-frontend):
+    - Built from `frontend/Dockerfile` (Node build → Nginx serve).
+    - Nginx forwards `/api/` calls to `https://pft-api-x9xf.onrender.com/api/`.
+  - `render.yaml` describes:
+    - The managed PostgreSQL database.
+    - The backend and frontend services.
+    - Environment variables and health check paths.
+
+Each push to GitHub triggers a new build and deployment on Render.
+
+### 2.3 Data Model
+The core of the system is four entities: **User**, **Category**, **Transaction**, and **Budget**. They are modeled as relational tables in PostgreSQL and corresponding structs in Go.
+
+- User
+  - Represents an application user.
+  - Attributes: id, name, email, password_hash, created_at
+  - Relationships:
+    - One-to-many with Category (a user defines many categories)
+    - One-to-many with Transaction (a user records many transactions)
+    - One-to-many with Budget (a user sets many budgets)
+
+- Category
+  - Represents a spending or income category owned by a user.
+  - Attributes: id, user_id, name, type (income or expense), created_at
+  - Relationships:
+    - Many-to-one with User
+    - One-to-many with Transaction
+    - One-to-many with Budget (e.g., monthly category budgets)
+   
+- Transaction
+  - Represents a single income or expense entry.
+  - Attributes: id, user_id, category_id, amount, type (income or expense), date, description, created_at
+  - Relationships:
+    - Many-to-one with User
+    - Many-to-one with Category
+
+- Budget
+  - Represents a user’s limit for a month, optionally for a category.
+  - Attributes: id, user_id, category_id (nullable for overall budget), period_month (YYYY-MM), limit_amount, created_at
+  - Relationships:
+    - Many-to-one with User
+    - Many-to-one with Category
+   
+```mermaid
+erDiagram
+  USER ||--o{ CATEGORY : has
+  USER ||--o{ TRANSACTION : makes
+  USER ||--o{ BUDGET : sets
+  CATEGORY ||--o{ TRANSACTION : categorizes
+  CATEGORY ||--o{ BUDGET : limits
+
+  USER {
+    int id PK
+    text name
+    text email
+    text password_hash
+    datetime created_at
+  }
+
+  CATEGORY {
+    int id PK
+    int user_id FK
+    text name
+    text type  
+    datetime created_at
+  }
+
+  TRANSACTION {
+    int id PK
+    int user_id FK
+    int category_id FK
+    numeric amount
+    text type  
+    date date
+    text description
+    datetime created_at
+  }
+
+  BUDGET {
+    int id PK
+    int user_id FK
+    int category_id FK  
+    char period_month   
+    numeric limit_amount
+    datetime created_at
+  }
+
+```
+
+### 2.4 System Workflow
+
+```mermaid
+sequenceDiagram
+  participant U as User Browser
+  participant F as Frontend (Nginx+React)
+  participant B as Backend (Go/Gin)
+  participant D as Database (PostgreSQL)
+
+  U->>F: Open app URL (GET /)
+  F-->>U: index.html + JS bundle (React SPA)
+
+  U->>F: API call (e.g. POST /api/login)
+  F->>B: Proxy /api/login (HTTPS)
+  B->>D: SELECT user + verify password
+  D-->>B: User row
+  B-->>F: { token, id }
+  F-->>U: JSON response
+
+  U->>F: Authenticated API call (e.g. GET /api/dashboard/summary)
+  F->>B: Proxy with Authorization: Bearer <JWT>
+  B->>D: Query transactions/budgets
+  D-->>B: Aggregated data
+  B-->>F: Summary JSON
+  F-->>U: Render charts and tables
+```
+
+
+### 2.5 Technologies Used
 
 - **Backend**: Go (Gin)
 - **Frontend**: React + TypeScript
