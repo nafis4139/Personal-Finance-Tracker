@@ -56,8 +56,9 @@ The system is a classic three-tier web application:
 
 The frontend talks to the backend over `/api/*` endpoints, and the backend persists all data in PostgreSQL.
 
-**Components and responsibilities:**  
-1. **Web App (Frontend ):** 
+### 2.2 Components and responsibilities
+
+**01. Web App (Frontend ):** 
 
 Handles user interface, form inputs, and dashboards. Communicates with backend via REST API.
   - Built with React + TypeScript + Vite.
@@ -68,7 +69,7 @@ Handles user interface, form inputs, and dashboards. Communicates with backend v
   - Built as static files and served by Nginx inside the frontend Docker container.
   - Nginx is also configured as a reverse proxy so that browser requests to `/api/` are forwarded to the backend service on Render.
    
-2. **Backend API (Server):** 
+**02. Backend API (Server):** 
 
 Exposes endpoints for authentication, transactions, categories, and budgets. Handles validation, business logic, and database access.
   - Implemented in Go using the Gin framework.
@@ -85,7 +86,7 @@ Exposes endpoints for authentication, transactions, categories, and budgets. Han
     - CRUD operations for categories, transactions, and budgets.
     - Aggregation logic for dashboard summaries (e.g. monthly totals).
 
-3. **Auth Service (JWT):** 
+**03. Auth Service (JWT):** 
 
 Issues and validates JWT tokens for authenticated requests.
   - Uses JSON Web Tokens for stateless authentication.
@@ -98,7 +99,7 @@ Issues and validates JWT tokens for authenticated requests.
     - Extracts the user ID and attaches it to the request context.
   - All protected routes (`/api/me`, `/api/transactions`, `/api/budgets`, etc.) require a valid token.
     
-4. **Database (PostgreSQL):** 
+**04. Database (PostgreSQL):** 
 
 Stores persistent data such as users, transactions, categories and budgets.
   - Hosted as a managed PostgreSQL instance on Render (pft-db).
